@@ -127,6 +127,14 @@ Las respuestas de la API REST son respuestas HTTP que comunica los resultados de
     
 * **Cuerpo**: Contiene los datos asociados a la respuesta.
 
+## Algunos APIs de utilidad
+
+* https://learn.adafruit.com/adafruit-io/rest-api
+* https://www.sparkfun.com/news/2379
+* http://dweet.io/
+* http://freeboard.io/
+
+
 ## Enlaces
 
 1. https://wokwi.com/
