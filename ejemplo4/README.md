@@ -1,5 +1,29 @@
+# Ejemplo 4
 
-* **Tomado de**: Arduino Example: WiFi ([link](https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide/all#arduino-example-wifi))
+## Descripción
+
+ Este ejemplo es tomado de la sección **Arduino Example: WiFi** ([link](https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide/all#arduino-example-wifi)) del tutorial **ESP32 Thing Hookup Guide**([link](https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide/)). 
+
+ En este ejemplo, se usa la libreria WiFi para demostrar como conectar el ESP32 a una red wifi cercana y acceder como cliente, al dominio remoto **http://example.com/**
+
+## Hardware
+
+La siguiente tabla muestra los componentes de hardware necesarios para el caso:
+
+|#|Elemento|Cantidad|
+|----|----|----|
+|1|ESP32|1|
+|2|Pulsador|1|
+|3|Led|1|
+|4|Resistencia de 330 Ohm|1|
+
+La siguiente figura muestra el diagrama de conexión asociado al ejemplo:
+
+![ejemplo_4](ejemplo4_bb.png)
+
+## Software
+
+El programa a descargar se muestra a continuación:
 
 ```ino
 #include <WiFi.h>
@@ -118,7 +142,25 @@ void printLine()
 }
 ```
 
-## Referencias
+## Puesta en marcha
 
-* https://arduinotogo.com/
-* 
+Antes de descargar el programa al ESP32, no olvidar modificar las lineas de configuración de acceso al AP:
+
+```ino
+// WiFi network name and password:
+const char * networkName = "YOUR_NETWORK_HERE";
+const char * networkPswd = "YOUR_PASSWORD_HERE";
+```
+
+Una vez hecho esto, abrir el monitor serial de acuerdo a la configuración realizada en el programa (115200 para el caso). Si todo esta bien, la salida será como la que se muestra a continuación:
+
+![serial_out1](serial_out1.png)
+
+Luego, al presionar el pulsador, entonces la salida en el monitor serial será:
+
+![serial_out2](serial_out2.png)
+
+Si se observa la salida serial y se compara al inspecciónar en el navegador la pagina accedida (**example.com**), se puede observar, que lo que se imprime en el monitor serial es el codigo HTML de la pagina accedida.
+
+![browser_output](browser_output.png)
+

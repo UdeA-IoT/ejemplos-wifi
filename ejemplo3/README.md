@@ -1,5 +1,28 @@
+# Ejemplo 3
 
-* **Tomado de**: ESP32 Web Server – Arduino IDE ([link](https://randomnerdtutorials.com/esp32-web-server-arduino-ide/))
+## Descripción
+
+Este ejemplo, tomado de **ESP32 Web Server – Arduino IDE** ([link](https://randomnerdtutorials.com/esp32-web-server-arduino-ide/)), es una versión mejorada del ejemplo analizado en el ejemplo 2. 
+
+En este caso, a diferencia del ejemplo 2, se muestra una interfaz web mas amigable para el control de luces y se manejan dos leds.
+
+## Hardware
+
+Los componentes necesarios para implementar este ejemplo son:
+
+|#|Elemento|Cantidad|
+|----|----|----|
+|1|ESP32|1|
+|2|Led|2|
+|3|Resistencia de 330 Ohm|2|
+
+El diagrama de conexión se muestra a continuación:
+
+![ejemplo3_bb](ejemplo3_bb.png)
+
+## Software
+
+El código del ESP32 se muestra a continuación:
 
 ```ino
 #include <WiFi.h>
@@ -190,11 +213,40 @@ void printLine()
     Serial.print("-");
   Serial.println();
 }
-
 ```
 
-If the IP address of your shield is yourAddress:
-* http://yourAddress/1/on  turns the LED1 on
-* http://yourAddress/1/off turns the LED1 off
-* http://yourAddress/2/on  turns the LED2 on
-* http://yourAddress/2/off turns the LED2 off
+## Puesta en marcha
+
+Antes de descargar el programa al ESP32, no olvidar modificar las lineas de configuración de acceso al AP:
+
+```ino
+// Set these to your desired credentials.
+const char* ssid     = "yourssid";
+const char* password = "yourpasswd";
+```
+
+Una vez hecho esto, abrir el monitor serial de acuerdo a la configuración realizada en el programa (115200 para el caso). Si todo esta bien, la salida será como la que se muestra a continuación:
+
+![conexion_serial](conexion_serial.png)
+
+Una vez leida la IP arrojada en el monitor serial, se recomienda verificar conectividad antes de hacer el test de la aplicación. Para ello desde un PC conectado a la misma red local se puede usar el comando **ping** tal y como se muestra a continuación:
+
+![ping](ping.png)
+
+Si hay conectividad; ahora si, desde un navegador (en un PC o dispositivo movil) colocar la dirección IP del ESP32 e interactuar con la interfaz verificando que los leds conectados a la ESP32 se enciendan y apaguen. A continuación se muestra la interfaz grafica desplegada:
+
+![interfaz_web](interfaz_web.png)
+
+Tambien es posible hacer el test de la interfaz usando aplicaciones como Postman, para ello coloque las siguientes URLs:
+
+|URL|Efecto|
+|---|---|
+|```http://yourAddress/1/on```| Enciende el LED1 |
+|```http://yourAddress/1/off```| Apaga el LED1 |
+|```http://yourAddress/2/on```| Enciende el LED2 |
+|```http://yourAddress/2/off```| Apaga el LED2 |
+
+La siguiente figura muestra el caso en el cual **yourAddress** es la del ejemplo (**192.168.1.12**)
+
+![postman_test](postman_test.png)
+

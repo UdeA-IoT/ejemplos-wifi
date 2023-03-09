@@ -166,7 +166,6 @@ El ejemplo base (del cual se tomo el analizado previamente) encuentra dentro se 
 
 ![ejemplo_SimpleWiFiServer](ejemplo_SimpleWiFiServer.png)
 
-
 ## Enlaces:
 * https://github.com/paulocsanz?tab=repositories
 * https://github.com/me-no-dev?tab=repositories
