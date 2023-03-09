@@ -66,6 +66,65 @@ Antes de empezar, lo primero que debemos realizar es una prueba basica para veri
 
 ![scaneo](scann_wifi_terminal.png)
 
+## Librerias Wifi
+
+Para hacer posible una conexión empleando Wifi, es necesario contar con un **Access Point (AP)**. Un **AP** es un dispositivo que permite la conexión de dispositivos Wi-Fi a una red cableada tal y como se muestra en la siguiente figura:
+
+![AP_connection](https://esp8266-arduino-spanish.readthedocs.io/es/latest/_images/esp8266-station-soft-access-point.png)
+
+Para permitir la conexión de una placa Arduino a un red wifi se emplea el **Arduino WiFi**. Esto es posible gracias a la libreria **WiFi** ([link](https://www.arduino.cc/en/Reference/WiFi)) (la cual viene incluida en el Arduino IDE).
+A continuación se muestran las clases de mayor uso de esta libreria:
+
+### Clase WiFi 
+La clase WiFi inicializa la biblioteca de ethernet y la configuración de red. La siguiente tabla muestra algunos de los principales métodos:
+
+|Método|Descripción|Sintaxis|
+|---|---|---|
+|```WiFi.begin()```|Inicializa la configuración de red de la biblioteca WiFi y proporciona el estado actual|```WiFi.begin();``` <br> ```WiFi.begin(ssid);``` <br> ```WiFi.begin(ssid, pass);``` 
+|```WiFi.disconnect()```|Desconecta la placa WiFi de la red actual.|```WiFi.disconnect();```|
+|```WiFi.status()```|Devuelve el estado de la conexión (```WL_CONNECTED```, ```WL_CONNECTION_LOST```, ```WL_DISCONNECTED``` y ```WL_CONNECT_FAILED``` entre otros).|```WiFi.status();```|
+
+
+### Clase IPAddress 
+
+La clase ```IPAddress``` proporciona información sobre la configuración de la red. La siguiente tabla muestra los métodos de la clase ```Wifi``` que son empleados con esta clase:
+
+|Método|Descripción|Sintaxis|
+|---|---|---|
+|```WiFi.localIP()```|Obtiene la dirección IP de la placa WiFi.|```WiFi.localIP();```|
+|```WiFi.subnetMask()```|Obtiene la mascara de subred de la placa WiFi.|```WiFi.subnetMask();```|
+|```WiFi.gatewayIP()```|Obtiene la dirección IP de la puerta de enlace de la placa WiFi.|```WiFi.gatewayIP();```|
+
+### Clase Server
+
+La clase Server crea servidores que pueden enviar y recibir datos de clientes conectados (programas que se ejecutan en otras computadoras o dispositivos). Esta clase, es la clase base de Wifi Server. Para su instanciación se emplea el siguiente constructor:
+
+|Clase|Descripción|Sintaxis del constructor|
+|---|---|---|
+|```WiFiServer```|Crea un servidor que escucha las conexiones entrantes en el puerto especificado.|```Server(port);```|
+
+A continuación se resumen algunos de los principales métodos asociados a esta clase.
+
+|Método|Descripción|Sintaxis|
+|---|---|---|
+|```begin()```|Le dice al servidor que comience a escuchar las conexiones entrantes.|```server.begin();```|
+
+### Clase Client
+
+La clase client crea clientes que pueden conectarse a servidores y enviar y recibir datos.
+
+|Método|Descripción|Sintaxis|
+|---|---|---|
+|```WiFiClient()```|Crea un cliente que puede conectarse a una dirección IP y un puerto de Internet especificados como se define en ```client.connect()```.|```WiFiClient();```|
+|```connected()```|Determina si el cliente está conectado o no |```client.connected();```|
+
+Debido al uso masivo del ESP8266, se creo una libreria WiFi (la cual trata de conservar la filosofia de la libreria original para Arduino) para esta plataforma. Para consultar mas sobre esta libreria puede dirigirse a la sección del [ESP8266WiFi library](https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/readme.html) API de [ESP8266 Arduino Core](https://arduino-esp8266.readthedocs.io/en/latest/index.html).
+
+Para mayor información puede consultar:
+1. [Arduino WiFi library](https://www.arduino.cc/en/Reference/WiFi)
+2. [ESP8266 Arduino Core’s](https://arduino-esp8266.readthedocs.io/en/latest/index.html)
+3. [ESP8266 Arduino Core’s en español](https://esp8266-arduino-spanish.readthedocs.io/es/latest/#)
+
 ## Ejemplos
 
 1. Enunciado en construcción.
@@ -90,3 +149,10 @@ Antes de empezar, lo primero que debemos realizar es una prueba basica para veri
 * https://docs.espressif.com/projects/arduino-esp32/en/latest/api/wifi.html
 * https://pygmalion.tech/tutoriales/robotica-basica/tutorial-camara-termica-amg8833/
 * https://pygmalion.tech/tutoriales/
+* https://esp32.com/
+* https://www.espressif.com/en/products/socs/esp32/resources
+* https://github.com/espressif
+* https://blynk.io/
+* https://docs.espressif.com/projects/arduino-esp32/en/latest/libraries.html
+* https://github.com/UdeA-IoT/actividad-6
+* https://github.com/tamberg/fhnw-iot

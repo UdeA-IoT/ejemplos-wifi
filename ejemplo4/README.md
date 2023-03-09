@@ -164,3 +164,6 @@ Si se observa la salida serial y se compara al inspecciónar en el navegador la 
 
 ![browser_output](browser_output.png)
 
+## Referencias
+
+* https://arduinotogo.com/
